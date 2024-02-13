@@ -29,6 +29,8 @@
                 </div>
             </div>
         </nav>
+        {% extends 'base.html' %}
+        {% block content %}
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
@@ -38,8 +40,8 @@
                 <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">{{ content.title }}</h1>
-                    <p>{{ content.content}}</p>
-                    <a class="btn btn-primary" href="/mysite/{{ content.id }}/">상품 상세보기</a>
+                    <p>{{ content.content | truncatewords:30 }}</p>
+                    <a class="btn btn-primary" href="{% url 'detail' content.id %}">>상품 상세보기</a>
                 </div>
             </div>
             {% endfor %}
@@ -48,8 +50,6 @@
         {% endif %}
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+        {% endblock %}
     </body>
 </html>
